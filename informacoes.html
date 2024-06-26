@@ -25,6 +25,22 @@
             color: #f8f9fa; /* Cor do texto dos links ao passar o mouse */
         }
     </style>
+
+<script type="text/javascript">
+
+    function cor()
+    {
+        document.getElementById("forca").style.fontWeight = "bold";
+        document.getElementById("forca").style.textDecoration = "underline";
+    }
+                    
+    function limpa() {
+        document.getElementById("forca").style.fontWeight = "normal";
+        document.getElementById("forca").style.textDecoration = "none";
+    }
+    
+    </script>
+
 </head>
 <body>
     <header>
@@ -56,18 +72,18 @@
     </header>
     <main>
         <section>
-            <h2>Conheça mais sobre o Super Herói da Informática</h2>
+            <h2 >Conheça mais sobre o Super Herói da Informática</h2>
             <p>**Informações Detalhadas sobre o Super-Herói da Informática**</p>
 
             <p>Nesta seção supersecreta, você descobrirá os segredos ocultos e os poderes extraordinários do Super-Herói da Informática. Prepare-se para uma jornada de conhecimento que irá explodir sua mente!</p>
 
-            <h3>Força</h3>
+            <h3 onmouseover="cor('f')" onmouseout="limpa()" id="forca" >Força</h3>
             <ul>
                 <li>Pode levantar um servidor com uma única tecla</li>
                 <li>Capaz de destruir um vírus com um clique</li>
             </ul>
 
-            <h3>Resistência</h3>
+            <h3 onmouseover="cor('r')" onmouseout="limpa()" id="resist">Resistência</h3>
             <ul>
                 <li>Imune a ataques cibernéticos</li>
                 <li>Pode sobreviver a quedas de energia sem precisar de recarga</li>
