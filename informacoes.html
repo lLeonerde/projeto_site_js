@@ -28,10 +28,29 @@
 
 <script type="text/javascript">
 
-    function cor()
+    function cor(valor)
     {
-        document.getElementById("forca").style.fontWeight = "bold";
-        document.getElementById("forca").style.textDecoration = "underline";
+        switch(valor){
+            case 'f':
+                document.getElementById("forca").style.fontWeight = "bold";
+                document.getElementById("forca").style.textDecoration = "underline";
+            case 'r':
+                document.getElementById("resist").style.fontWeight = "normal";
+                document.getElementById("resist").style.textDecoration = "none";
+            case 'v':
+                document.getElementById("versa").style.fontWeight = "normal";
+                document.getElementById("versa").style.textDecoration = "none";
+            case 's':
+                document.getElementById("sensor").style.fontWeight = "normal";
+                document.getElementById("sensor").style.textDecoration = "none";
+            case 'm':
+                document.getElementById("module").style.fontWeight = "normal";
+                document.getElementById("module").style.textDecoration = "none";
+            case 'e':
+                document.getElementById("enemy").style.fontWeight = "normal";
+                document.getElementById("enemy").style.textDecoration = "none";
+                document.getElementById("enemy").style.color = "red";
+        }
     }
                     
     function limpa() {
@@ -44,12 +63,6 @@
 
         document.getElementById("versa").style.fontWeight = "normal";
         document.getElementById("versa").style.textDecoration = "none";
-
-        document.getElementById("resist").style.fontWeight = "normal";
-        document.getElementById("resist").style.textDecoration = "none";
-
-        document.getElementById("forca").style.fontWeight = "normal";
-        document.getElementById("forca").style.textDecoration = "none";
 
         document.getElementById("sensor").style.fontWeight = "normal";
         document.getElementById("sensor").style.textDecoration = "none";
