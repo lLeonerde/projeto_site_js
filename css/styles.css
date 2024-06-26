@@ -128,3 +128,12 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.parede {
+    width: 20px;
+    height: 100px;
+    background-color: gray;
+    position: absolute;
+    left: 700px;
+    top: 550px;
+}

@@ -2,73 +2,161 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('toggleSwitch').addEventListener('change', function() {
         var switchStatus = document.getElementById('switchStatus');
-        if (this.checked) {
+        
+    
+        if(this.checked){
             switchStatus.textContent = 'Auto';
-        } else {
+            var quadrado = document.getElementById('quadrado');
+            var velocidadeInput = document.getElementById('velocidade');
+            var numeroAleatorioX = gerarNumeroAleatorio();
+            var numeroAleatorioY = gerarNumeroAleatorio();
+            var posX = 50; 
+            var posY = 500; 
+            var velocidadeX = parseInt(velocidadeInput.value * numeroAleatorioX); 
+            var velocidadeY = parseInt(velocidadeInput.value * numeroAleatorioY); 
+            var direcaoX = 1; 
+            var direcaoY = 1; 
+
+            function moverQuadrado() {
+            
+                posX += velocidadeX / 60 * direcaoX; 
+                posY += velocidadeY / 60 * direcaoY;
+
+                
+                if (posX >= window.innerWidth - quadrado.offsetWidth) {
+                    posX = window.innerWidth - quadrado.offsetWidth; 
+                    direcaoX = -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                } else if (posX <= 0) {
+                    posX = 0; 
+                    direcaoX = 1; 
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                }
+
+                if (posY >= window.innerHeight - quadrado.offsetHeight) {
+                    posY = window.innerHeight - quadrado.offsetHeight;
+                    direcaoY = -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                } else if (posY-500 <= 0) {
+                    posY = 500; 
+                    direcaoY = 1; 
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                }
+
+        
+                quadrado.style.left = posX + 'px';
+                quadrado.style.top = posY + 'px';
+                
+                verificarColisao();
+
+                requestAnimationFrame(moverQuadrado);
+            }
+
+            velocidadeInput.addEventListener('input', function() {
+                velocidadeX = parseInt(velocidadeInput.value * numeroAleatorioX);
+                velocidadeY = parseInt(velocidadeInput.value * numeroAleatorioY); 
+            });
+            
+            function verificarColisao() {
+                var parede = document.querySelector('.parede');
+                var paredeRect = parede.getBoundingClientRect();
+                var divMovelRect = quadrado.getBoundingClientRect();
+
+                // Verifica se houve colisão
+                if (paredeRect.right >= divMovelRect.left &&
+                    paredeRect.left <= divMovelRect.right &&
+                    paredeRect.bottom >= divMovelRect.top &&
+                    paredeRect.top <= divMovelRect.bottom) {
+                    direcaoX *= -1;
+                    direcaoY *= -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                    // Aqui você pode adicionar o código para lidar com a colisão, se necessário
+                } else {
+                    console.log('Sem colisão.');
+                }
+            }
+
+            moverQuadrado();
+        }else{
             switchStatus.textContent = 'Mático';
-        }
-    });
 
-    var quadrado = document.getElementById('quadrado');
-    var velocidadeInput = document.getElementById('velocidade');
-    var numeroAleatorioX = gerarNumeroAleatorio();
-    var numeroAleatorioY = gerarNumeroAleatorio();
-    var posX = 50; // posição inicial do quadrado no eixo X
-    var posY = 500; // posição inicial do quadrado no eixo Y
-    var velocidadeX = parseInt(velocidadeInput.value * numeroAleatorioX); // velocidade inicial no eixo X (pixels por segundo)
-    var velocidadeY = parseInt(velocidadeInput.value * numeroAleatorioY); // velocidade inicial no eixo Y (pixels por segundo)
-    var direcaoX = 1; // direção inicial do movimento no eixo X (1 para direita, -1 para esquerda)
-    var direcaoY = 1; // direção inicial do movimento no eixo Y (1 para baixo, -1 para cima)
+            var quadrado = document.getElementById('quadrado');
 
-    function moverQuadrado() {
-        // Calcula a próxima posição do quadrado baseada na velocidade e direção nos eixos X e Y
-        posX += velocidadeX / 60 * direcaoX; // dividido por 60 para ajustar à taxa de atualização do navegador (60 quadros por segundo)
-        posY += velocidadeY / 60 * direcaoY;
+            function moverQuadrado() {
+            
+                posX += velocidadeX / 60 * direcaoX; 
+                posY += velocidadeY / 60 * direcaoY;
 
-        // Verifica se o quadrado atingiu os limites da janela no eixo X
-        if (posX >= window.innerWidth - quadrado.offsetWidth) {
-            posX = window.innerWidth - quadrado.offsetWidth; // ajusta a posição para o limite direito
-            direcaoX = -1; // reverte a direção no eixo X
-        } else if (posX <= 0) {
-            posX = 0; // ajusta a posição para o limite esquerdo
-            direcaoX = 1; // reverte a direção no eixo X
-        }
+                
+                if (posX >= window.innerWidth - quadrado.offsetWidth) {
+                    posX = window.innerWidth - quadrado.offsetWidth; 
+                    direcaoX = -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                } else if (posX <= 0) {
+                    posX = 0; 
+                    direcaoX = 1; 
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                }
 
-        // Verifica se o quadrado atingiu os limites da janela no eixo Y
-        if (posY >= window.innerHeight - quadrado.offsetHeight) {
-            posY = window.innerHeight - quadrado.offsetHeight;
-            direcaoY = -1; // reverte a direção no eixo Y
-        } else if (posY <= 0) {
-            posY = 0; // ajusta a posição para o limite superior
-            direcaoY = 1; // reverte a direção no eixo Y
-        }
-
-        // Define a nova posição do quadrado
-        quadrado.style.left = posX + 'px';
-        quadrado.style.top = posY + 'px';
-        
+                if (posY >= window.innerHeight - quadrado.offsetHeight) {
+                    posY = window.innerHeight - quadrado.offsetHeight;
+                    direcaoY = -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                } else if (posY-500 <= 0) {
+                    posY = 500; 
+                    direcaoY = 1; 
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                }
 
         
+                quadrado.style.left = posX + 'px';
+                quadrado.style.top = posY + 'px';
+                
+                verificarColisao();
 
+                requestAnimationFrame(moverQuadrado);
+            }
 
-        // Chama a função novamente no próximo quadro
-        requestAnimationFrame(moverQuadrado);
-    }
+            function verificarColisao() {
+                var parede = document.querySelector('.parede');
+                var paredeRect = parede.getBoundingClientRect();
+                var divMovelRect = quadrado.getBoundingClientRect();
 
-    // Atualiza a velocidade quando o valor no input muda
-    velocidadeInput.addEventListener('input', function() {
-        velocidadeX = parseInt(velocidadeInput.value); // atualiza a velocidade no eixo X
-        velocidadeY = parseInt(velocidadeInput.value); // atualiza a velocidade no eixo Y
+                // Verifica se houve colisão
+                if (paredeRect.right >= divMovelRect.left &&
+                    paredeRect.left <= divMovelRect.right &&
+                    paredeRect.bottom >= divMovelRect.top &&
+                    paredeRect.top <= divMovelRect.bottom) {
+                    direcaoX *= -1;
+                    direcaoY *= -1;
+                    velocidadeX = parseInt(velocidadeInput.value * gerarNumeroAleatorio());
+                    velocidadeY = parseInt(velocidadeInput.value * gerarNumeroAleatorio()); 
+                    // Aqui você pode adicionar o código para lidar com a colisão, se necessário
+                } else {
+                    console.log('Sem colisão.');
+                }
+            }
+
+            velocidadeInput.addEventListener('input', function() {
+                velocidadeX = parseInt(velocidadeInput.value * numeroAleatorioX);
+                velocidadeY = parseInt(velocidadeInput.value * numeroAleatorioY); 
+            });
+
+            moverQuadrado()
+        }
     });
-    
-
-    // Inicia o movimento do quadrado
-    moverQuadrado();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-});
+
 
 function validarFormulario() {
     var num1 = document.getElementById('num1').value;
@@ -81,7 +169,7 @@ function validarFormulario() {
 
     var resultado = parseFloat(num1) + parseFloat(num2);
     document.getElementById('resultado').innerText = 'Resultado: ' + resultado;
-    return false;  // Prevent form submission
+    return false; 
 }
 
 function gerarNumeroAleatorio() {
@@ -89,15 +177,3 @@ function gerarNumeroAleatorio() {
     return numeroAleatorio;
 }
 
-function gerarRecursivo() {
-    var numero = gerarNumeroAleatorio();
-    console.log('Número aleatório após 10 segundos:', numero);
-
-    // Chama a função novamente após 10 segundos
-    setTimeout(function() {
-        var resultado = gerarRecursivo();
-        return resultado;
-    }, 10000); // 10000 milissegundos = 10 segundos
-
-    return numero; // Retorna o número imediatamente após ser gerado
-}
