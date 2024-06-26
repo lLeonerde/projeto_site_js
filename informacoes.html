@@ -1,22 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações - Super Herói da Informática</title>
+    <title>Informações - Super herói da informatica</title>
+    <!-- Inclua o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Estilos personalizados para o cabeçalho */
+        .navbar {
+            background-color: #343a40; /* Cor de fundo */
+        }
+        .navbar-brand {
+            font-size: 24px; /* Tamanho da fonte do logotipo */
+            text-transform: uppercase; /* Transformação para maiúsculas */
+        }
+        .navbar-nav .nav-link {
+            font-size: 16px; /* Tamanho da fonte dos links */
+            color: #ffffff; /* Cor do texto dos links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa; /* Cor do texto dos links ao passar o mouse */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Informações</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="calculadora.html">Calculadora</a></li>
-                <li><a href="informacoes.html">Informações</a></li>
-                <li><a href="carrinho.html">Contato</a></li>
-            </ul>
+        <!-- Cabeçalho com Bootstrap -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Informações</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                         <li class="nav-item">
+                            <a class="nav-link" href="index.html">Início</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="calculadora.html">Calculadora</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-item active" href="informacoes.html">Informações</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="carrinho.html">Contato</a>
+                            </li>
+                        </ul>
+                </div>
+            </div>
         </nav>
     </header>
     <main>
