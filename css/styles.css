@@ -61,12 +61,19 @@ h1{
 h2{
     color:azure;
 }
+h3{
+    color:azure;
+}
+li{
+    color: azure;
+}
 p{
     color:azure;
 }
 label{
     color:azure;
 }
+
 
 
 /* Estilo do switch */
