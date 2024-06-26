@@ -6,6 +6,19 @@
     <title>Calculadora - Super Herói da Informática</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/script.js" defer></script>
+
+    <style>
+        #quadrado {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
 </head>
 <body>
     <header>
@@ -22,14 +35,8 @@
     <main>
     
         <h2>Selecione a Velocidade</h2>
-        <form id="calcForm" onsubmit="return validarFormulario()">
-            <label for="num1">Velocidade:</label>
-            <input type="number" id="num1" name="num1" required>
-
-            <button type="submit">Calcular</button>
-        </form>
-        <p id="resultado"></p>
-
+        <label for="nome">Velocidade:</label>
+        <input type="text" id="nome">
 
         <section>
             <h2>Selecione o estado</h2>
@@ -37,8 +44,12 @@
                 <input type="checkbox" id="toggleSwitch">
                 <span class="slider round"></span>
             </label>
-            <p id="switchStatus">Desligado</p>
+            <p id="switchStatus">Mático</p>
         </section>
+
+        <div id="quadrado"></div>
+
+
     
     </main>
 </body>
