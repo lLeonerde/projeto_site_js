@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function moverQuadradoManual(event) {
-        var passo = 10; // Tamanho do passo para movimento manual
+        var passo = 10;
         switch (event.key) {
             case 'ArrowUp':
                 posY -= passo;
@@ -94,10 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 posX += passo;
                 break;
             default:
-                return; // Ignora outras teclas
+                return; 
         }
 
-        // Limita o movimento dentro da janela
         if (posX < 0) posX = 0;
         if (posX > window.innerWidth - quadrado.offsetWidth) posX = window.innerWidth - quadrado.offsetWidth;
         if (posY < 500) posY = 500;
@@ -115,11 +114,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 paredeRect.left <= divMovelRect.right &&
                 paredeRect.bottom >= divMovelRect.top &&
                 paredeRect.top <= divMovelRect.bottom) {
-                // Calcula a quantidade de sobreposição nas direções horizontal e vertical
+
                 var overlapX = Math.min(divMovelRect.right - paredeRect.left, paredeRect.right - divMovelRect.left);
                 var overlapY = Math.min(divMovelRect.bottom - paredeRect.top, paredeRect.bottom - divMovelRect.top);
 
-                // Ajusta a posição do quadrado para corrigir a colisão
                 if (overlapX < overlapY) {
                     if (divMovelRect.left < paredeRect.left) {
                         posX -= overlapX;
@@ -134,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
 
-                // Atualiza a posição do quadrado
                 quadrado.style.left = posX + 'px';
                 quadrado.style.top = posY + 'px';
             }
