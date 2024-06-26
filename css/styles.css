@@ -52,5 +52,18 @@ section {
 img {
     max-width: 100%;
     height: auto;
+    color: azure;
 }
 
+h1{
+    color:azure;
+}
+h2{
+    color:azure;
+}
+p{
+    color:azure;
+}
+label{
+    color:azure;
+}
