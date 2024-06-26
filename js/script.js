@@ -1,14 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('heroImage').addEventListener('click', function() {
-        alert('Você clicou no Super Herói da Informática!');
-    });
 
     document.getElementById('toggleSwitch').addEventListener('change', function() {
         var switchStatus = document.getElementById('switchStatus');
-        if (switchStatus.checked) {
-            switchStatus.textContent = 'Ligado';
+        if (this.checked) {
+            switchStatus.textContent = 'Auto';
         } else {
-            switchStatus.textContent = 'Desligado';
+            switchStatus.textContent = 'Mático';
         }
     });
 });

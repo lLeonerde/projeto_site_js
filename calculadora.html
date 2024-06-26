@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora - Super Herói da Informática</title>
     <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scripts.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -20,18 +20,18 @@
         </nav>
     </header>
     <main>
+    
+        <h2>Selecione a Velocidade</h2>
+        <form id="calcForm" onsubmit="return validarFormulario()">
+            <label for="num1">Velocidade:</label>
+            <input type="number" id="num1" name="num1" required>
+
+            <button type="submit">Calcular</button>
+        </form>
+        <p id="resultado"></p>
+
+
         <section>
-            <h2>Faça seu cálculo</h2>
-            <form id="calcForm" onsubmit="return validarFormulario()">
-                <label for="num1">Número 1:</label>
-                <input type="number" id="num1" name="num1" required>
-
-                
-            </form>
-            <p id="resultado"></p>
-
-
-           <section>
             <h2>Selecione o estado</h2>
             <label class="switch">
                 <input type="checkbox" id="toggleSwitch">
@@ -39,7 +39,7 @@
             </label>
             <p id="switchStatus">Desligado</p>
         </section>
-        </section>
+    
     </main>
 </body>
 </html>
